@@ -21,7 +21,7 @@ dinoSoorten.forEach(soort => {
   kaart.innerHTML = `
     <img class="dino-kaart-icoon" src="${soort.icoon}" alt="${soort.naam}">
     <div class="dino-kaart-inhoud">
-      <div class="dino-kaart-naam">${soort.naam} ${soort.gevaarlijk ? '⚠️' : '✅'}</div>
+      <div class="dino-kaart-naam">${soort.naam} ${soort.gevaarlijk ? '⚠️' : ''}</div>
       ${soort.weetjes.map(w => `<div class="dino-kaart-weetje">${w}</div>`).join('')}
     </div>
   `

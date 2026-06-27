@@ -36,6 +36,18 @@ export const dinoSoorten = [
     ]
   },
   {
+    id: "spinosaurus",
+    naam: "Spinosaurus",
+    icoon: "assets/icons/spinasaurus.PNG",
+    gevaarlijk: true,
+    milieu: "land",
+    weetjes: [
+      "Ik ben de grootste vleesetende dino ooit — groter dan de T-Rex!",
+      "Ik heb een grote vin op mijn rug. Die gebruik ik om te laten zien wie de baas is.",
+      "Ik eet ook vis! Ik woon graag bij rivieren en meren."
+    ]
+  },
+  {
     id: "styracosaurus",
     naam: "Styracosaurus",
     icoon: "assets/icons/styracosaurus.PNG",
@@ -84,6 +96,13 @@ export const dinoInstanties = [
   { soortId: "brachiosaurus", lat: 52.125, lng: 4.452, richting: 160, snelheid: 0.0001 },
   { soortId: "vliegend",      lat: 52.128, lng: 4.442, richting:  90, snelheid: 0.0004 },
   { soortId: "vliegend",      lat: 52.140, lng: 4.435, richting: 220, snelheid: 0.0005 },
+
+  // --- Spinosaurussen ---
+  { soortId: "spinosaurus", lat: 52.160, lng: 4.490, richting: 200, snelheid: 0.0003 }, // Vlietland rivier
+  { soortId: "spinosaurus", lat: 51.920, lng: 4.480, richting:  80, snelheid: 0.0003 }, // Rotterdam haven
+  { soortId: "spinosaurus", lat: 48.860, lng:  2.350, richting: 310, snelheid: 0.0003 }, // Parijs (Seine)
+  { soortId: "spinosaurus", lat: 30.060, lng: 31.240, richting: 150, snelheid: 0.0003 }, // Caïro (Nijl)
+  { soortId: "spinosaurus", lat:-22.910, lng: -43.17, richting:  90, snelheid: 0.0003 }, // Rio (Amazon)
 
   // --- Styracosaurussen ---
   { soortId: "styracosaurus", lat: 52.090, lng: 4.310, richting: 130, snelheid: 0.0001 }, // Den Haag

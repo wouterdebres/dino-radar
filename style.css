@@ -234,26 +234,27 @@ html, body {
 .dino-kaart {
   background: white;
   border-radius: 20px;
-  padding: 14px;
+  padding: 16px;
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   border: 2px solid #f0ddb0;
   box-shadow: 0 3px 10px rgba(76,175,80,0.1);
 }
 
 .dino-kaart-icoon {
-  width: 70px;
-  height: 70px;
+  width: 130px;
+  height: 130px;
   object-fit: contain;
-  flex-shrink: 0;
 }
 
 .dino-kaart-naam {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 900;
   margin-bottom: 7px;
   color: var(--kleur-tekst);
+  text-align: center;
 }
 
 .dino-kaart-weetje {
