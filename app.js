@@ -76,10 +76,17 @@ const dinos = dinoInstanties.map((inst, i) => {
     soort,
     lat: inst.lat,
     lng: inst.lng,
+    homeLat: inst.lat,
+    homeLng: inst.lng,
     richting: inst.richting,
-    snelheid: inst.snelheid,
+    snelheid: inst.snelheid * 6,  // 6x sneller zodat beweging zichtbaar is
     waterbak: inst.waterbak || null,
-    marker: null
+    marker: null,
+    // voor vloeiende animatie
+    renderLat: inst.lat,
+    renderLng: inst.lng,
+    doelLat: inst.lat,
+    doelLng: inst.lng,
   }
 })
 
@@ -327,46 +334,68 @@ function tekenDinosOpOffset(offset) {
 }
 
 // ── Animatie ──────────────────────────────────────────────
-const STAP_INTERVAL = 2500
-const RICHTINGSWIJZIGING_KANS = 0.10
+const STAP_INTERVAL = 2000
+const RICHTINGSWIJZIGING_KANS = 0.20
+const WANDER_RADIUS = 1.5  // graden; dino blijft binnen 1.5° van startplek
 
+function stapDino(dino) {
+  if (Math.random() < RICHTINGSWIJZIGING_KANS) {
+    dino.richting = (dino.richting + (Math.random() * 80 - 40) + 360) % 360
+  }
+
+  const hoek = dino.richting * (Math.PI / 180)
+
+  if (dino.waterbak) {
+    const nieuwLat = dino.lat + Math.cos(hoek) * dino.snelheid
+    const nieuwLng = dino.lng + Math.sin(hoek) * dino.snelheid
+    const b = dino.waterbak
+    if (nieuwLat >= b.latMin && nieuwLat <= b.latMax && nieuwLng >= b.lngMin && nieuwLng <= b.lngMax) {
+      dino.lat = nieuwLat
+      dino.lng = nieuwLng
+    } else {
+      dino.richting = (dino.richting + 150 + Math.random() * 60) % 360
+    }
+  } else {
+    const nieuwLat = dino.lat + Math.cos(hoek) * dino.snelheid
+    const nieuwLng = dino.lng + Math.sin(hoek) * dino.snelheid
+    // Blijf binnen wander-radius van startplek
+    const dLat = nieuwLat - dino.homeLat
+    const dLng = nieuwLng - dino.homeLng
+    const afstand = Math.sqrt(dLat * dLat + dLng * dLng)
+    if (afstand > WANDER_RADIUS) {
+      // Draai terug naar home
+      const terugHoek = Math.atan2(dino.homeLng - dino.lng, dino.homeLat - dino.lat) * (180 / Math.PI)
+      dino.richting = (terugHoek + (Math.random() * 40 - 20) + 360) % 360
+    } else {
+      dino.lat = nieuwLat
+      dino.lng = nieuwLng
+    }
+  }
+
+  dino.doelLat = dino.lat
+  dino.doelLng = dino.lng
+}
+
+// Vloeiende animatie via requestAnimationFrame
+const LERP_FACTOR = 0.06
+
+function animatieLoop() {
+  if (huidigOffset === 0) {
+    dinos.forEach(dino => {
+      dino.renderLat += (dino.doelLat - dino.renderLat) * LERP_FACTOR
+      dino.renderLng += (dino.doelLng - dino.renderLng) * LERP_FACTOR
+      dino.marker.setLatLng([dino.renderLat, dino.renderLng])
+    })
+  }
+  requestAnimationFrame(animatieLoop)
+}
+
+// Stap-logica elke STAP_INTERVAL ms
 setInterval(() => {
   if (huidigOffset !== 0) return
-
   dinos.forEach(dino => {
-    if (Math.random() < RICHTINGSWIJZIGING_KANS) {
-      dino.richting = (dino.richting + (Math.random() * 50 - 25) + 360) % 360
-    }
-
-    if (dino.waterbak) {
-      // Bereken nieuwe positie
-      const hoek = dino.richting * (Math.PI / 180)
-      const nieuwLat = dino.lat + Math.cos(hoek) * dino.snelheid
-      const nieuwLng = dino.lng + Math.sin(hoek) * dino.snelheid
-      const b = dino.waterbak
-      // Alleen bewegen als nieuwe positie binnen waterbak valt
-      if (nieuwLat >= b.latMin && nieuwLat <= b.latMax && nieuwLng >= b.lngMin && nieuwLng <= b.lngMax) {
-        dino.lat = nieuwLat
-        dino.lng = nieuwLng
-      } else {
-        // Kaats terug: draai richting om + beetje willekeurig
-        dino.richting = (dino.richting + 150 + Math.random() * 60) % 360
-      }
-    } else {
-      const hoek = dino.richting * (Math.PI / 180)
-      dino.lat += Math.cos(hoek) * dino.snelheid
-      dino.lng += Math.sin(hoek) * dino.snelheid
-      // Landdino's blijven in de buurt van Voorschoten
-      const dLat = VOORSCHOTEN[0] - dino.lat
-      const dLng = VOORSCHOTEN[1] - dino.lng
-      const afstand = Math.sqrt(dLat * dLat + dLng * dLng)
-      if (afstand > 0.03) {
-        dino.richting = Math.atan2(dLng, dLat) * (180 / Math.PI)
-      }
-    }
-
-    dino.marker.setLatLng([dino.lat, dino.lng])
-
+    stapDino(dino)
+    // Update richting-pijl
     const icon = L.divIcon({
       html: maakMarkerHTML(dino),
       className: '',
@@ -376,4 +405,6 @@ setInterval(() => {
     dino.marker.setIcon(icon)
   })
 }, STAP_INTERVAL)
+
+requestAnimationFrame(animatieLoop)
 
