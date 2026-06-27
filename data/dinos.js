@@ -36,6 +36,18 @@ export const dinoSoorten = [
     ]
   },
   {
+    id: "stegosaurus",
+    naam: "Stegosaurus",
+    icoon: "assets/icons/stegosaurus.PNG",
+    gevaarlijk: false,
+    milieu: "land",
+    weetjes: [
+      "Ik heb grote platen op mijn rug — die gebruik ik om warm te worden in de zon.",
+      "Mijn staart heeft scherpe stekels. Ik gebruik ze alleen als ik bang ben!",
+      "Ik eet alleen planten. Varens en mossen zijn mijn favoriete eten."
+    ]
+  },
+  {
     id: "water",
     naam: "Plesiosaurus",
     icoon: "assets/icons/water-dino.PNG",
@@ -60,6 +72,14 @@ export const dinoInstanties = [
   { soortId: "brachiosaurus", lat: 52.125, lng: 4.452, richting: 160, snelheid: 0.0001 },
   { soortId: "vliegend",      lat: 52.128, lng: 4.442, richting:  90, snelheid: 0.0004 },
   { soortId: "vliegend",      lat: 52.140, lng: 4.435, richting: 220, snelheid: 0.0005 },
+
+  // --- Stegosaurussen ---
+  { soortId: "stegosaurus", lat: 52.140, lng: 4.460, richting: 200, snelheid: 0.0001 }, // Leiden
+  { soortId: "stegosaurus", lat: 52.100, lng: 4.380, richting:  60, snelheid: 0.0001 }, // Voorburg
+  { soortId: "stegosaurus", lat: 48.860, lng:  2.350, richting:  90, snelheid: 0.0001 }, // Parijs
+  { soortId: "stegosaurus", lat: 51.510, lng: -0.120, richting: 270, snelheid: 0.0001 }, // Londen
+  { soortId: "stegosaurus", lat: 52.520, lng: 13.400, richting: 180, snelheid: 0.0001 }, // Berlijn
+  { soortId: "stegosaurus", lat: -1.290, lng: 36.820, richting: 120, snelheid: 0.0001 }, // Nairobi
 
   // --- Vlietland (water) ---
   { soortId: "water", lat: 52.1135, lng: 4.4205, richting: 180, snelheid: 0.0001, waterbak: { latMin: 52.108, latMax: 52.122, lngMin: 4.413, lngMax: 4.435 } },
