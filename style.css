@@ -52,8 +52,8 @@ html, body {
   box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e8b96a, 0 30px 80px rgba(0,0,0,0.25);
 }
 
-/* Op echte telefoon: vul het hele scherm */
-@media (pointer: coarse) {
+/* Op echte telefoon of tablet: vul het hele scherm */
+@media (pointer: coarse), (max-width: 900px) {
   #telefoon {
     padding: 0;
     align-items: stretch;
@@ -64,6 +64,7 @@ html, body {
     max-width: 100%;
     width: 100%;
     height: 100dvh;
+    max-height: 100dvh;
     border-radius: 0;
     box-shadow: none;
   }
