@@ -36,6 +36,18 @@ export const dinoSoorten = [
     ]
   },
   {
+    id: "styracosaurus",
+    naam: "Styracosaurus",
+    icoon: "assets/icons/styracosaurus.PNG",
+    gevaarlijk: false,
+    milieu: "land",
+    weetjes: [
+      "Ik heb een grote hoorn op mijn neus en stekels rondom mijn hoofd. Best indrukwekkend!",
+      "Ik eet alleen planten. Maar als je me bang maakt, gebruik ik mijn hoorn!",
+      "Ik leef in kuddes — als je er één ziet, zijn er vast meer in de buurt."
+    ]
+  },
+  {
     id: "stegosaurus",
     naam: "Stegosaurus",
     icoon: "assets/icons/stegosaurus.PNG",
@@ -72,6 +84,14 @@ export const dinoInstanties = [
   { soortId: "brachiosaurus", lat: 52.125, lng: 4.452, richting: 160, snelheid: 0.0001 },
   { soortId: "vliegend",      lat: 52.128, lng: 4.442, richting:  90, snelheid: 0.0004 },
   { soortId: "vliegend",      lat: 52.140, lng: 4.435, richting: 220, snelheid: 0.0005 },
+
+  // --- Styracosaurussen ---
+  { soortId: "styracosaurus", lat: 52.090, lng: 4.310, richting: 130, snelheid: 0.0001 }, // Den Haag
+  { soortId: "styracosaurus", lat: 52.370, lng: 4.900, richting: 220, snelheid: 0.0001 }, // Amsterdam
+  { soortId: "styracosaurus", lat: 41.900, lng: 12.500, richting:  45, snelheid: 0.0001 }, // Rome
+  { soortId: "styracosaurus", lat: 40.420, lng: -3.700, richting: 300, snelheid: 0.0001 }, // Madrid
+  { soortId: "styracosaurus", lat: 35.680, lng: 139.69, richting: 180, snelheid: 0.0001 }, // Tokyo
+  { soortId: "styracosaurus", lat: 34.050, lng:-118.24, richting:  90, snelheid: 0.0001 }, // LA
 
   // --- Stegosaurussen ---
   { soortId: "stegosaurus", lat: 52.140, lng: 4.460, richting: 200, snelheid: 0.0001 }, // Leiden
