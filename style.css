@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --kleur-achtergrond: #fef6e4;
+  --kleur-app: #fef6e4;
+  --kleur-nav: #fff8ee;
+  --kleur-nav-actief: #e8391c;
+  --kleur-tekst: #1a1a1a;
+  --kleur-tekst-zacht: #7a6a50;
+  --kleur-tijdlijn: #FFEAC8;
+  --kleur-accent: #e8391c;
+  --kleur-groen: #5aab34;
+  --kleur-oranje: #f5a623;
+  --nav-hoogte: 76px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  background: var(--kleur-achtergrond);
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--kleur-tekst);
+}
+
+/* ── Telefoon frame (desktop) ── */
+#telefoon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: radial-gradient(ellipse at center, #f5d9a8 0%, #e8b96a 100%);
+}
+
+#app {
+  width: 100%;
+  max-width: 390px;
+  height: 844px;
+  max-height: calc(100vh - 40px);
+  background: var(--kleur-app);
+  border-radius: 44px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e8b96a, 0 30px 80px rgba(0,0,0,0.25);
+}
+
+/* Op echte telefoon: vul het hele scherm */
+@media (pointer: coarse) {
+  #telefoon {
+    padding: 0;
+    align-items: stretch;
+    min-height: 100dvh;
+    background: var(--kleur-app);
+  }
+  #app {
+    max-width: 100%;
+    width: 100%;
+    height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/* ── Schermen ── */
+.scherm {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+}
+.scherm.actief { display: flex; }
+
+.scherm-header {
+  padding: 18px 20px 14px;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--kleur-tekst);
+  border-bottom: 2px solid #f0ddb0;
+  background: white;
+}
+
+/* ── Radar scherm ── */
+#scherm-radar { position: relative; }
+
+#app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px 8px;
+  background: #FFEAC8;
+  border-bottom: 2px solid #e8cfa0;
+  z-index: 1000;
+  flex-shrink: 0;
+}
+
+#app-logo img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+#locatie-pill {
+  background: #f7f7f7;
+  border: 2px solid #e8e0d0;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--kleur-tekst-zacht);
+}
+
+#kaart-container {
+  flex: 1;
+  position: relative;
+  min-height: 0;
+}
+
+#kaart { width: 100%; height: 100%; }
+
+/* Leaflet popup reset */
+.leaflet-popup-content-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.leaflet-popup-content { margin: 0 !important; }
+.leaflet-popup-tip-container { display: none; }
+
+/* Dino popup spraakwolk */
+.dino-popup {
+  background: white;
+  border-radius: 20px;
+  padding: 13px 15px;
+  max-width: 210px;
+  position: relative;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+  font-size: 13px;
+  color: var(--kleur-tekst);
+  line-height: 1.45;
+  border: 2px solid #f0ddb0;
+  font-family: 'Nunito', sans-serif;
+}
+.dino-popup::after {
+  content: '';
+  position: absolute;
+  bottom: -11px;
+  left: 22px;
+  border: 11px solid transparent;
+  border-top-color: white;
+  border-bottom: 0;
+}
+.dino-popup-naam {
+  font-weight: 900;
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: var(--kleur-tekst);
+}
+
+/* Tijdlijn grafiek */
+#tijdlijn {
+  background: var(--kleur-tijdlijn);
+  padding: 10px 0 6px 0;
+  border-top: 2px solid #e8d09a;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  user-select: none;
+}
+
+#grafiek-labels-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2px 6px 18px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--kleur-tekst-zacht);
+  flex-shrink: 0;
+  text-align: right;
+}
+
+#grafiek-wrap {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+}
+
+#grafiek {
+  width: 100%;
+  height: 80px;
+  display: block;
+  cursor: crosshair;
+}
+
+#grafiek-tooltip {
+  position: absolute;
+  top: 2px;
+  background: var(--kleur-tekst);
+  color: white;
+  border-radius: 10px;
+  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: 800;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ── Dino Info scherm ── */
+#dino-lijst {
+  overflow-y: auto;
+  flex: 1;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--kleur-app);
+}
+
+.dino-kaart {
+  background: white;
+  border-radius: 20px;
+  padding: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  border: 2px solid #f0ddb0;
+  box-shadow: 0 3px 10px rgba(76,175,80,0.1);
+}
+
+.dino-kaart-icoon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.dino-kaart-naam {
+  font-size: 17px;
+  font-weight: 900;
+  margin-bottom: 7px;
+  color: var(--kleur-tekst);
+}
+
+.dino-kaart-weetje {
+  font-size: 13px;
+  color: var(--kleur-tekst-zacht);
+  line-height: 1.5;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.dino-kaart-weetje::before { content: '🦴 '; }
+
+/* ── Tips scherm ── */
+#tips-inhoud {
+  overflow-y: auto;
+  flex: 1;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--kleur-app);
+}
+
+.tip-kaart {
+  background: white;
+  border-radius: 20px;
+  padding: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border: 2px solid #f0ddb0;
+  box-shadow: 0 3px 10px rgba(76,175,80,0.1);
+}
+
+.tip-emoji {
+  font-size: 32px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.tip-tekst {
+  font-size: 13px;
+  color: var(--kleur-tekst-zacht);
+  line-height: 1.55;
+  font-weight: 600;
+}
+.tip-tekst strong { color: var(--kleur-tekst); font-weight: 900; }
+
+/* ── Bottom nav ── */
+#bottom-nav {
+  display: flex;
+  background: #FFEAC8;
+  height: var(--nav-hoogte);
+  border-top: 2px solid #e8cfa0;
+  flex-shrink: 0;
+}
+
+.nav-knop {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b8a080;
+  transition: color 0.2s, transform 0.15s;
+  position: relative;
+  padding: 6px 4px;
+}
+
+.nav-knop.actief {
+  color: #1a1a1a;
+}
+
+.nav-knop .nav-icoon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 36px;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.nav-knop.actief .nav-icoon-wrap {
+  background: #e0c090;
+}
+
+.nav-knop:active { transform: scale(0.9); }
+
+.nav-icoon { font-size: 24px; line-height: 1; }
+.nav-icoon-img { width: 46px; height: 46px; object-fit: contain; }
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: #c8aa80;
+}
+.nav-knop.actief .nav-label {
+  font-weight: 900;
+  color: var(--kleur-accent);
+}
+
+/* ── Dino markers op kaart ── */
+.dino-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.dino-marker-img {
+  width: 46px;
+  height: 54px;
+  object-fit: contain;
+  transition: transform 0.2s;
+  filter: drop-shadow(0 3px 5px rgba(0,0,0,0.3));
+}
+
+.dino-marker:active .dino-marker-img { transform: scale(1.2); }
+
+.dino-pijl-boven {
+  font-size: 16px;
+  line-height: 1;
+  margin-bottom: 1px;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+}
+
+.dino-marker.gevaarlijk .dino-pijl-boven { color: #ff3b30; }
+.dino-marker.veilig     .dino-pijl-boven { color: #34c759; }
+.dino-marker.water      .dino-pijl-boven { color: #2563eb; }
+.dino-marker.lucht      .dino-pijl-boven { color: #9333ea; }
+
+/* ── Eigen locatie marker ── */
+.eigen-locatie-marker {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eigen-locatie-dot {
+  width: 16px;
+  height: 16px;
+  background: #2563eb;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.6);
+  position: relative;
+  z-index: 2;
+}
+
+.eigen-locatie-ping {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.18);
+  animation: ping 1.8s ease-out infinite;
+}
+
+.eigen-locatie-ping2 {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.25);
+  animation: ping 1.8s ease-out infinite 0.5s;
+}
+
+@keyframes ping {
+  0%   { transform: scale(0.3); opacity: 1; }
+  100% { transform: scale(1.1); opacity: 0; }
+}
+
+/* ── Popup extra stijlen ── */
+.dino-popup-weetje {
+  font-size: 12.5px;
+  color: #5a7a5a;
+  margin-top: 6px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.popup-waarschuwing {
+  background: #fff0ee;
+  color: #c0392b;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 9px;
+  border-radius: 8px;
+  margin: 5px 0;
+  border: 1.5px solid #ffd5cf;
+}
+
+.popup-veilig {
+  background: #f0fde8;
+  color: #27ae60;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 9px;
+  border-radius: 8px;
+  margin: 5px 0;
+  border: 1.5px solid #fde8c0;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Dino Radar 🦕</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="telefoon">
+    <div id="app">
+
+      <!-- RADAR SCHERM -->
+      <div id="scherm-radar" class="scherm actief">
+        <div id="app-header">
+          <div id="app-logo">
+            <img src="assets/icons/logo.jpg" alt="dno logo">
+          </div>
+          <div id="locatie-pill">📍 Voorschoten</div>
+        </div>
+        <div id="kaart-container">
+          <div id="kaart"></div>
+        </div>
+        <div id="tijdlijn">
+          <div id="grafiek-labels-y">
+            <span>Veel</span>
+            <span>Matig</span>
+            <span>Weinig</span>
+          </div>
+          <div id="grafiek-wrap">
+            <canvas id="grafiek"></canvas>
+            <div id="grafiek-tooltip"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DINO INFO SCHERM -->
+      <div id="scherm-info" class="scherm">
+        <div class="scherm-header"><span style="color:#5aab34">🦕</span> Dino Info</div>
+        <div id="dino-lijst"></div>
+      </div>
+
+      <!-- TIPS SCHERM -->
+      <div id="scherm-tips" class="scherm">
+        <div class="scherm-header"><span style="color:#f5a623">💡</span> Tips</div>
+        <div id="tips-inhoud">
+          <div class="tip-kaart">
+            <div class="tip-emoji">🥶</div>
+            <div class="tip-tekst"><strong>Beweeg niet bij een T-Rex!</strong> De T-Rex ziet bijna niets — maar hij reageert wel op beweging. Sta zo stil als een standbeeld en hij loopt gewoon door.</div>
+          </div>
+          <div class="tip-kaart">
+            <div class="tip-emoji">👃</div>
+            <div class="tip-tekst"><strong>Dino's ruiken heel goed.</strong> Een T-Rex ruikt je van ver weg. Zorg dat de wind van de dino naar jou waait, niet andersom — anders ruikt hij je al voor je hem ziet.</div>
+          </div>
+          <div class="tip-kaart">
+            <div class="tip-emoji">🤫</div>
+            <div class="tip-tekst"><strong>Maak geen geluid.</strong> Velociraptors jagen op geluid. Fluister, loop op je tenen en laat niets vallen. Ze horen een takje knappen van 50 meter afstand!</div>
+          </div>
+          <div class="tip-kaart">
+            <div class="tip-emoji">🚪</div>
+            <div class="tip-tekst"><strong>Sluit alle deuren.</strong> Velociraptors zijn slim genoeg om deurknoppen open te draaien. Vergrendel alles! Een gewone deur houdt ze misschien maar even tegen.</div>
+          </div>
+          <div class="tip-kaart">
+            <div class="tip-emoji">🏃</div>
+            <div class="tip-tekst"><strong>Ren niet rechtdoor.</strong> Als je toch moet rennen, zigzag dan! Grote dino's kunnen slecht bochten maken. Blijf niet op een rechte weg rennen.</div>
+          </div>
+          <div class="tip-kaart">
+            <div class="tip-emoji">🌊</div>
+            <div class="tip-tekst"><strong>Niet zwemmen als er water-dino's zijn!</strong> De Plesiosaurus zit in meren en zeeën. Check altijd de radar voor je het water in gaat.</div>
+          </div>
+          <div class="tip-kaart">
+            <div class="tip-emoji">☂️</div>
+            <div class="tip-tekst"><strong>Kijk omhoog!</strong> De Pterosaurus vliegt boven je hoofd en duikt naar beneden als hij iets ziet bewegen. Ga naar binnen bij een vliegende dino in de buurt.</div>
+          </div>
+          <div class="tip-kaart">
+            <div class="tip-emoji">🦕</div>
+            <div class="tip-tekst"><strong>Groene dino's zijn planteneters.</strong> De Brachiosaurus eet alleen bladeren van hoge bomen. Hij doet je niets — maar let op zijn enorme poten!</div>
+          </div>
+          <div class="tip-kaart">
+            <div class="tip-emoji">📡</div>
+            <div class="tip-tekst"><strong>Check de radar voor je naar buiten gaat.</strong> Kijk altijd eerst of er rode pieken zijn in de grafiek. Veel rode bars? Blijf lekker binnen!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM NAV -->
+      <nav id="bottom-nav">
+        <button class="nav-knop actief" data-scherm="radar">
+          <span class="nav-icoon-wrap"><img class="nav-icoon-img" src="assets/icons/radar.PNG" alt="Radar"></span>
+          <span class="nav-label">Radar</span>
+        </button>
+        <button class="nav-knop" data-scherm="info">
+          <span class="nav-icoon-wrap"><img class="nav-icoon-img" src="assets/icons/dino-info.PNG" alt="Dino Info"></span>
+          <span class="nav-label">Dino Info</span>
+        </button>
+        <button class="nav-knop" data-scherm="tips">
+          <span class="nav-icoon-wrap"><img class="nav-icoon-img" src="assets/icons/tips.PNG" alt="Tips"></span>
+          <span class="nav-label">Tips</span>
+        </button>
+      </nav>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

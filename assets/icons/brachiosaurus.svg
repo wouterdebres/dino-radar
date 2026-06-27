@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="120" height="140">
+  <!-- Body -->
+  <ellipse cx="62" cy="90" rx="38" ry="22" fill="#6aaa5a" stroke="#2a4a20" stroke-width="3"/>
+  <!-- Neck -->
+  <path d="M48 78 Q42 55 35 30 Q33 18 40 10" fill="none" stroke="#2a4a20" stroke-width="14" stroke-linecap="round"/>
+  <path d="M48 78 Q42 55 35 30 Q33 18 40 10" fill="none" stroke="#7aba68" stroke-width="10" stroke-linecap="round"/>
+  <!-- Head -->
+  <ellipse cx="38" cy="9" rx="12" ry="8" fill="#6aaa5a" stroke="#2a4a20" stroke-width="2.5" transform="rotate(-30 38 9)"/>
+  <!-- Mouth open -->
+  <path d="M28 5 Q35 2 44 6" fill="none" stroke="#2a4a20" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Eye -->
+  <circle cx="35" cy="5" r="2" fill="#2a4a20"/>
+  <!-- Tail -->
+  <path d="M98 88 Q112 90 118 86" fill="none" stroke="#6aaa5a" stroke-width="10" stroke-linecap="round"/>
+  <path d="M98 88 Q112 90 118 86" fill="none" stroke="#7aba68" stroke-width="6" stroke-linecap="round"/>
+  <!-- Front left leg -->
+  <rect x="44" y="108" width="10" height="26" rx="4" fill="#6aaa5a" stroke="#2a4a20" stroke-width="2.5"/>
+  <!-- Front right leg -->
+  <rect x="58" y="110" width="10" height="24" rx="4" fill="#6aaa5a" stroke="#2a4a20" stroke-width="2.5"/>
+  <!-- Back left leg -->
+  <rect x="72" y="108" width="10" height="26" rx="4" fill="#6aaa5a" stroke="#2a4a20" stroke-width="2.5"/>
+  <!-- Back right leg -->
+  <rect x="84" y="106" width="10" height="24" rx="4" fill="#6aaa5a" stroke="#2a4a20" stroke-width="2.5"/>
+  <!-- Feet -->
+  <ellipse cx="49" cy="134" rx="8" ry="4" fill="#5a9a4a" stroke="#2a4a20" stroke-width="2"/>
+  <ellipse cx="63" cy="134" rx="8" ry="4" fill="#5a9a4a" stroke="#2a4a20" stroke-width="2"/>
+  <ellipse cx="77" cy="134" rx="8" ry="4" fill="#5a9a4a" stroke="#2a4a20" stroke-width="2"/>
+  <ellipse cx="89" cy="130" rx="8" ry="4" fill="#5a9a4a" stroke="#2a4a20" stroke-width="2"/>
+  <!-- Stripes on body -->
+  <path d="M30 88 Q62 82 94 88" fill="none" stroke="#5a9a4a" stroke-width="2" opacity="0.6"/>
+  <path d="M28 94 Q62 88 96 94" fill="none" stroke="#5a9a4a" stroke-width="2" opacity="0.6"/>
+</svg>
