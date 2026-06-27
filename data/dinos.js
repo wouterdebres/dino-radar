@@ -125,10 +125,10 @@ export const dinoInstanties = [
   { soortId: "water", lat: 52.1160, lng: 4.4270, richting:  60, snelheid: 0.0001, waterbak: { latMin: 52.108, latMax: 52.122, lngMin: 4.413, lngMax: 4.435 } },
 
   // --- Noordzee (water) ---
-  { soortId: "water", lat: 52.300, lng: 3.980, richting:  30, snelheid: 0.0003, waterbak: { latMin: 51.4, latMax: 53.5, lngMin: 3.3, lngMax: 4.15 } },
-  { soortId: "water", lat: 52.050, lng: 4.050, richting: 150, snelheid: 0.0003, waterbak: { latMin: 51.4, latMax: 53.5, lngMin: 3.3, lngMax: 4.15 } },
-  { soortId: "water", lat: 52.800, lng: 4.100, richting: 200, snelheid: 0.0003, waterbak: { latMin: 51.4, latMax: 53.5, lngMin: 3.3, lngMax: 4.15 } },
-  { soortId: "water", lat: 53.300, lng: 3.800, richting:  90, snelheid: 0.0003, waterbak: { latMin: 51.4, latMax: 53.5, lngMin: 3.3, lngMax: 4.15 } },
+  { soortId: "water", lat: 52.300, lng: 3.700, richting:  30, snelheid: 0.0003, waterbak: { latMin: 51.5, latMax: 53.5, lngMin: 3.0, lngMax: 3.9 } },
+  { soortId: "water", lat: 52.050, lng: 3.600, richting: 150, snelheid: 0.0003, waterbak: { latMin: 51.5, latMax: 53.5, lngMin: 3.0, lngMax: 3.9 } },
+  { soortId: "water", lat: 52.800, lng: 3.500, richting: 200, snelheid: 0.0003, waterbak: { latMin: 51.5, latMax: 53.5, lngMin: 3.0, lngMax: 3.9 } },
+  { soortId: "water", lat: 53.300, lng: 3.400, richting:  90, snelheid: 0.0003, waterbak: { latMin: 51.5, latMax: 53.5, lngMin: 3.0, lngMax: 3.9 } },
 
   // --- Nederland ---
   { soortId: "trex",          lat: 52.370, lng: 4.900, richting: 120, snelheid: 0.0003 }, // Amsterdam
@@ -167,13 +167,13 @@ export const dinoInstanties = [
   { soortId: "trex",          lat: 40.420, lng: -3.700, richting: 300, snelheid: 0.0003 }, // Madrid
   { soortId: "brachiosaurus", lat: 41.390, lng:  2.170, richting:  90, snelheid: 0.0001 }, // Barcelona
   { soortId: "vliegend",      lat: 37.390, lng: -5.990, richting: 130, snelheid: 0.0005 }, // Sevilla
-  { soortId: "water",         lat: 36.800, lng: -3.500, richting: 200, snelheid: 0.0002, waterbak: { latMin: 36.0, latMax: 38.0, lngMin: -5.5, lngMax: -1.0 } }, // Middellandse Zee ES
+  { soortId: "water",         lat: 36.500, lng: -2.500, richting: 200, snelheid: 0.0002, waterbak: { latMin: 35.8, latMax: 37.2, lngMin: -4.5, lngMax: -0.5 } }, // Middellandse Zee ES
 
   // --- Italië ---
   { soortId: "trex",          lat: 41.900, lng: 12.500, richting: 120, snelheid: 0.0003 }, // Rome
   { soortId: "brachiosaurus", lat: 45.460, lng:  9.190, richting: 240, snelheid: 0.0001 }, // Milaan
   { soortId: "vliegend",      lat: 43.770, lng: 11.260, richting:  60, snelheid: 0.0005 }, // Florence
-  { soortId: "water",         lat: 44.300, lng: 13.800, richting: 180, snelheid: 0.0002, waterbak: { latMin: 43.0, latMax: 45.5, lngMin: 12.5, lngMax: 16.0 } }, // Adriatische Zee
+  { soortId: "water",         lat: 43.500, lng: 14.500, richting: 180, snelheid: 0.0002, waterbak: { latMin: 41.5, latMax: 44.5, lngMin: 13.5, lngMax: 16.0 } }, // Adriatische Zee
 
   // --- Scandinavië ---
   { soortId: "trex",          lat: 59.910, lng: 10.750, richting: 200, snelheid: 0.0003 }, // Oslo
@@ -190,8 +190,8 @@ export const dinoInstanties = [
   { soortId: "brachiosaurus", lat: 47.380, lng:  8.540, richting: 160, snelheid: 0.0001 }, // Zürich
 
   // --- Middellandse Zee ---
-  { soortId: "water", lat: 38.500, lng: 15.500, richting: 270, snelheid: 0.0003, waterbak: { latMin: 36.0, latMax: 41.0, lngMin: 10.0, lngMax: 20.0 } },
-  { soortId: "water", lat: 39.000, lng:  5.000, richting:  45, snelheid: 0.0003, waterbak: { latMin: 37.0, latMax: 42.0, lngMin: 1.0,  lngMax: 10.0 } },
+  { soortId: "water", lat: 37.500, lng: 14.000, richting: 270, snelheid: 0.0003, waterbak: { latMin: 36.0, latMax: 38.5, lngMin: 11.5, lngMax: 16.5 } }, // Middellandse Zee (midden)
+  { soortId: "water", lat: 39.500, lng:  5.500, richting:  45, snelheid: 0.0003, waterbak: { latMin: 38.5, latMax: 41.5, lngMin: 3.5,  lngMax: 8.5  } }, // Middellandse Zee (west)
 
   // --- Portugal ---
   { soortId: "trex",     lat: 38.720, lng: -9.140, richting:  60, snelheid: 0.0003 }, // Lissabon
@@ -199,7 +199,7 @@ export const dinoInstanties = [
 
   // --- Griekenland ---
   { soortId: "trex",     lat: 37.980, lng: 23.730, richting: 300, snelheid: 0.0003 }, // Athene
-  { soortId: "water",    lat: 37.500, lng: 25.000, richting: 130, snelheid: 0.0002, waterbak: { latMin: 36.0, latMax: 39.0, lngMin: 22.0, lngMax: 28.0 } }, // Egeïsche Zee
+  { soortId: "water",    lat: 37.800, lng: 25.500, richting: 130, snelheid: 0.0002, waterbak: { latMin: 36.5, latMax: 39.5, lngMin: 23.5, lngMax: 27.0 } }, // Egeïsche Zee
 
   // --- Benin & West-Afrika ---
   { soortId: "trex",          lat:  6.370, lng:  2.430, richting:  90, snelheid: 0.0003 }, // Cotonou
@@ -235,7 +235,7 @@ export const dinoInstanties = [
   { soortId: "trex",          lat: 28.610, lng:  77.21, richting: 200, snelheid: 0.0003 }, // New Delhi
   { soortId: "brachiosaurus", lat: 39.910, lng: 116.39, richting:  90, snelheid: 0.0001 }, // Peking
   { soortId: "vliegend",      lat:  1.350, lng: 103.82, richting: 150, snelheid: 0.0005 }, // Singapore
-  { soortId: "water",         lat: 15.000, lng: 110.00, richting:  45, snelheid: 0.0003, waterbak: { latMin: 5.0, latMax: 22.0, lngMin: 105.0, lngMax: 120.0 } }, // Zuid-Chinese Zee
+  { soortId: "water",         lat: 12.000, lng: 113.00, richting:  45, snelheid: 0.0003, waterbak: { latMin: 8.0, latMax: 18.0, lngMin: 110.0, lngMax: 117.0 } }, // Zuid-Chinese Zee
 
   // --- Australië ---
   { soortId: "trex",          lat:-33.870, lng: 151.21, richting: 270, snelheid: 0.0003 }, // Sydney
