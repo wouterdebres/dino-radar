@@ -130,6 +130,13 @@ export const dinoInstanties = [
   { soortId: "water", lat: 52.800, lng: 3.500, richting: 200, snelheid: 0.0003, waterbak: { latMin: 51.5, latMax: 53.5, lngMin: 3.0, lngMax: 3.9 } },
   { soortId: "water", lat: 53.300, lng: 3.400, richting:  90, snelheid: 0.0003, waterbak: { latMin: 51.5, latMax: 53.5, lngMin: 3.0, lngMax: 3.9 } },
 
+  // --- Texel ---
+  { soortId: "trex",          lat: 53.050, lng: 4.800, richting: 180, snelheid: 0.0003 }, // Texel midden
+  { soortId: "brachiosaurus", lat: 53.110, lng: 4.860, richting:  90, snelheid: 0.0001 }, // Texel noord
+  { soortId: "vliegend",      lat: 52.970, lng: 4.780, richting: 270, snelheid: 0.0005 }, // Texel zuid
+  { soortId: "stegosaurus",   lat: 53.060, lng: 4.750, richting:  45, snelheid: 0.0001 }, // Texel west
+  { soortId: "water",         lat: 53.000, lng: 4.600, richting: 120, snelheid: 0.0002, waterbak: { latMin: 52.8, latMax: 53.2, lngMin: 4.4, lngMax: 4.72 } }, // Waddenzee Texel
+
   // --- Nederland ---
   { soortId: "trex",          lat: 52.370, lng: 4.900, richting: 120, snelheid: 0.0003 }, // Amsterdam
   { soortId: "trex",          lat: 51.920, lng: 4.480, richting:  80, snelheid: 0.0003 }, // Rotterdam
